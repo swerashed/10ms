@@ -1,3 +1,4 @@
+import TitleAndDescription from "@/components/title-and-description"
 
 export default async function MainPage({
     params,
@@ -6,25 +7,20 @@ export default async function MainPage({
 }) {
     const { lang } = await params
     return <div>
-        <div className="max-w-6xl mx-auto p-6 space-y-6">
+        <div className="">
             {/* Header Section */}
             <div className="w-full bg-blue-100 border border-gray-400 p-6 text-center">
                 <h1 className="text-lg font-medium text-gray-700">Header (Not Mandatory)</h1>
             </div>
 
+
+            {/* Title & Description*/}
+            <TitleAndDescription />
             {/* Main Content Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Left Column - Main Content */}
                 <div className="lg:col-span-2 space-y-6">
-                    {/* Title */}
-                    <div className="bg-gray-100 border border-gray-400 p-4 text-center">
-                        <h2 className="text-base font-medium text-gray-700">Title (will be the product title)</h2>
-                    </div>
-
-                    {/* Description */}
-                    <div className="bg-blue-100 border border-gray-400 p-8 text-center">
-                        <h3 className="text-base font-medium text-gray-700">Description (HTML)</h3>
-                    </div>
+                 
 
                     {/* Instructors */}
                     <div className="bg-blue-100 border border-gray-400 p-6 text-center">
@@ -62,9 +58,9 @@ export default async function MainPage({
                     {/* CTA */}
                     <div className="bg-blue-100 border border-gray-400 p-4 text-center">
                         <h3 className="text-base font-medium text-gray-700">
-                          CTA text - (data found in cta_text)
+                            CTA text - (data found in cta_text)
 
-                            </h3>
+                        </h3>
                     </div>
 
                     {/* Check Lists */}
