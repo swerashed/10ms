@@ -1,6 +1,7 @@
 import CourseInstructor from "@/components/course-instructor"
 import LaidOut from "@/components/laid-out"
 import TitleAndDescription from "@/components/title-and-description"
+import WillLearn from "@/components/will-learn"
 
 export default async function MainPage({
     params,
@@ -31,9 +32,7 @@ export default async function MainPage({
                     <LaidOut />
 
                     {/* What you will learn */}
-                    <div className="bg-blue-100 border border-gray-400 p-6 text-center">
-                        <h3 className="text-sm font-medium text-gray-700">What you will learn by doing the course (will be in sections array type=pointers)</h3>
-                    </div>
+                   <WillLearn/>
 
                     {/* Course Exclusive Feature */}
                     <div className="bg-blue-100 border border-gray-400 p-6 text-center">
