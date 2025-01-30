@@ -1,4 +1,5 @@
 import CourseInstructor from "@/components/course-instructor"
+import ExclusiveFeatures from "@/components/exclusive-features"
 import LaidOut from "@/components/laid-out"
 import TitleAndDescription from "@/components/title-and-description"
 import WillLearn from "@/components/will-learn"
@@ -20,7 +21,7 @@ export default async function MainPage({
             {/* Title & Description*/}
             <TitleAndDescription />
             {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mt-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl px-5 mx-auto mt-8">
                 {/* Left Column - Main Content */}
                 <div className="lg:col-span-2 space-y-6 lg:space-y-10">
 
@@ -32,12 +33,10 @@ export default async function MainPage({
                     <LaidOut />
 
                     {/* What you will learn */}
-                   <WillLearn/>
+                    <WillLearn />
 
                     {/* Course Exclusive Feature */}
-                    <div className="bg-blue-100 border border-gray-400 p-6 text-center">
-                        <h3 className="text-base font-medium text-gray-700">Course Exclusive Feature (will be in sections array type=instructor)</h3>
-                    </div>
+                    <ExclusiveFeatures />
 
                     {/* Course details */}
                     <div className="bg-blue-100 border border-gray-400 p-6 text-center">
