@@ -1,3 +1,5 @@
+import Accordion from "@/components/common/accordion"
+import CourseDetails from "@/components/course-details"
 import CourseInstructor from "@/components/course-instructor"
 import ExclusiveFeatures from "@/components/exclusive-features"
 import LaidOut from "@/components/laid-out"
@@ -39,9 +41,7 @@ export default async function MainPage({
                     <ExclusiveFeatures />
 
                     {/* Course details */}
-                    <div className="bg-blue-100 border border-gray-400 p-6 text-center">
-                        <h3 className="text-base font-medium text-gray-700">Course details (will be in sections array type=about)</h3>
-                    </div>
+                    <CourseDetails />
                 </div>
 
                 {/* Right Column - Sidebar */}
