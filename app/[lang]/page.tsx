@@ -3,6 +3,7 @@ import CourseDetails from "@/components/course-details"
 import CourseInstructor from "@/components/course-instructor"
 import ExclusiveFeatures from "@/components/exclusive-features"
 import LaidOut from "@/components/laid-out"
+import ProductTrailer from "@/components/product-trailer"
 import TitleAndDescription from "@/components/title-and-description"
 import WillLearn from "@/components/will-learn"
 
@@ -47,9 +48,7 @@ export default async function MainPage({
                 {/* Right Column - Sidebar */}
                 <div className="space-y-6">
                     {/* Trailer */}
-                    <div className="bg-blue-100 border border-gray-400 p-12 text-center">
-                        <h3 className="text-base font-medium text-gray-700">Product trailer (YouTube player) - (data found in media)</h3>
-                    </div>
+                   <ProductTrailer/>
 
                     {/* CTA */}
                     <div className="bg-blue-100 border border-gray-400 p-4 text-center">
