@@ -69,15 +69,17 @@ const mediaData = [
 ];
 
 const ProductTrailer = () => {
-  const previewGallery = useMemo(
+    // 1. State hooks
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
+      const previewGallery = useMemo(
     () => mediaData.filter((item) => item.name === "preview_gallery"),
     []
   );
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
 
-  const handleNext = () => {
+    // 2. Functions/handlers
+const handleNext = () => {
     setIsPlaying(false);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % previewGallery.length);
   };
@@ -100,8 +102,8 @@ const ProductTrailer = () => {
       setIsPlaying(true);
     }
   };
-
-  if (previewGallery.length === 0) {
+    // 3. useEffect or other hooks
+   if (previewGallery.length === 0) {
     return null;
   }
   const currentItem = previewGallery[currentIndex];
@@ -115,10 +117,14 @@ const ProductTrailer = () => {
   // Render nothing if the determined src is not valid
   if (!mainDisplaySrc) return null;
 
+    // 4. scope component or mini component
+
+ 
+
   return (
-    <div className="w-full border-border md:border md:max-w-[330px] lg:max-w-[400px] bg-white">
-      <div className="hidden p-1 md:block">
-        <div className="relative overflow-hidden bg-black youtube-video aspect-video select-none">
+    <div className="w-full bg-transparent">
+      <div className="p-1 block rounded-lg overflow-hidden">
+        <div className="relative overflow-hidden bg-black youtube-video aspect-video select-none  rounded-lg">
           {isPlaying && currentItem.resource_type === "video" ? (
             <iframe
               src={`https://www.youtube.com/embed/${currentItem.resource_value}?autoplay=1&rel=0`}
@@ -169,7 +175,7 @@ const ProductTrailer = () => {
           )}
         </div>
 
-        <div className="flex gap-4 p-4 overflow-x-auto no-scrollbar">
+        <div className="flex gap-4 py-4 pl-1 overflow-x-auto no-scrollbar">
           {previewGallery.map((item, index) => {
             // CHANGED: Use explicit logic to determine the thumbnail source URL
             const thumbnailSrc =
