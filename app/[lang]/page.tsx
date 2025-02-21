@@ -1,3 +1,5 @@
+import BuyCTA from "@/components/buy-cta"
+import CheckLists from "@/components/check-lists"
 import Accordion from "@/components/common/accordion"
 import CourseDetails from "@/components/course-details"
 import CourseInstructor from "@/components/course-instructor"
@@ -47,22 +49,11 @@ export default async function MainPage({
 
                 {/* Right Column - Sidebar */}
                 <div className="space-y-6">
-                    {/* Trailer */}
-                    <div className="hidden lg:flex">
+                    {/* Trailer, CTA & Check Lists */}
+                    <div className="hidden lg:flex flex-col sticky top-10 bg-white border border-border p-1">
                         <ProductTrailer />
-                    </div>
-
-                    {/* CTA */}
-                    <div className="bg-blue-100 border border-gray-400 p-4 text-center">
-                        <h3 className="text-base font-medium text-gray-700">
-                            CTA text - (data found in cta_text)
-
-                        </h3>
-                    </div>
-
-                    {/* Check Lists */}
-                    <div className="bg-blue-100 border border-gray-400 p-12 text-center">
-                        <h3 className="text-base font-medium text-gray-700">Check List- (data found in checklist)</h3>
+                        <BuyCTA />
+                        <CheckLists />
                     </div>
                 </div>
             </div>
