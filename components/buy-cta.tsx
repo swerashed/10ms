@@ -5,9 +5,9 @@ const BuyCTA = () => {
     // 4. scope component or mini component
 
     return (
-        <div className="w-full p-4 md:h-auto">
+        <div className="w-full lg:p-4 md:h-auto">
             <div className="relative md:static ">
-                <div>
+            
                     <div className="flex flex-col w-full">
                         <div>
                             <div className="flex items-center justify-between md:flex-col md:items-start">
@@ -26,7 +26,7 @@ const BuyCTA = () => {
                             কোর্সটি কিনুন
                         </button>
                     </div>
-                </div>
+           
                 <div className="absolute md:static top-[-45px] left-0 ">
                     <div />
                 </div>

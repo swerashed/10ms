@@ -17,10 +17,6 @@ export default async function MainPage({
     const { lang } = await params
     return <div>
         <div className="">
-            {/* Header Section */}
-            <div className="w-full bg-blue-100 border border-gray-400 p-6 text-center">
-                <h1 className="text-lg font-medium text-gray-700">Header (Not Mandatory)</h1>
-            </div>
 
 
             {/* Title & Description*/}
