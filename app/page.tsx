@@ -1,6 +1,6 @@
+import { cookies } from 'next/headers';
 import BuyCTA from "@/components/buy-cta"
 import CheckLists from "@/components/check-lists"
-import Accordion from "@/components/common/accordion"
 import CourseDetails from "@/components/course-details"
 import CourseInstructor from "@/components/course-instructor"
 import ExclusiveFeatures from "@/components/exclusive-features"
@@ -9,12 +9,18 @@ import ProductTrailer from "@/components/product-trailer"
 import TitleAndDescription from "@/components/title-and-description"
 import WillLearn from "@/components/will-learn"
 
-export default async function MainPage({
-    params,
-}: {
-    params: Promise<{ lang: string }>
-}) {
-    const { lang } = await params
+export default async function MainPage() {
+    let lang: 'en' | 'bn' = 'en';
+
+    // Priority 1: Cookie
+    const cookieStore = cookies();
+    const langCookie = (await cookieStore).get('lang')?.value as 'en' | 'bn' | undefined;
+    if (langCookie) {
+        lang = langCookie;
+    } 
+
+
+    console.log("langCookie", langCookie)
     return <div>
         <div className="">
 

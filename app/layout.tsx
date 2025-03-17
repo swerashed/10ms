@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import "../globals.css";
+import "./globals.css";
 import { Inter } from 'next/font/google';
 import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
-
+import { cookies } from 'next/headers';
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
@@ -20,17 +20,21 @@ export async function generateStaticParams() {
 
 export default async function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode
-  params: Promise<{ lang: 'en' | 'bn' }>
 }>) {
+
+
+  const cookieStore = cookies();
+  const langCookie = (await cookieStore).get('lang')?.value as 'en' | 'bn' | undefined;
+
+  
   return (
-    <html lang={(await params).lang}>
+    <html lang={langCookie}>
       <body className={inter.className}>
-        <Navbar/>
+        <Navbar />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
