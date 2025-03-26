@@ -56,23 +56,15 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-
-
+export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   const cookieStore = cookies();
   const langCookie = (await cookieStore).get('lang')?.value as 'en' | 'bn' | undefined;
-
-
   return (
     <html lang={langCookie}>
       <body className={inter.className}>
         <Navbar />
         {children}
-        <Footer />
+        <Footer/>
       </body>
     </html>
   );

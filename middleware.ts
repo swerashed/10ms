@@ -16,14 +16,19 @@ function getLocale(request: NextRequest): string {
 
 export function middleware(request: NextRequest) {
   const langCookie = request.cookies.get('lang')?.value as 'en' | 'bn' | undefined;
-  const manualLang = request.cookies.get('manualLang')?.value === 'true';
+  const manualLang = request.cookies.get('manualLang')?.value as 'en' | 'bn' | undefined;
 
   const detectedLocale = getLocale(request);
 
   const response = NextResponse.next();
 
-  if (!manualLang) {
-    // Auto-sync lang cookie with Accept-Language (if not manually overridden)
+  if (manualLang) {
+    // Manual language preference: sync lang cookie with manualLang
+    if (langCookie !== manualLang) {
+      response.cookies.set('lang', manualLang, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+    }
+  } else {
+    // Auto-detect language from Accept-Language header
     if (langCookie !== detectedLocale) {
       response.cookies.set('lang', detectedLocale, { path: '/', maxAge: 60 * 60 * 24 * 30 });
     }
