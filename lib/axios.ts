@@ -11,7 +11,7 @@ const axiosClient = axios.create({
 export const AppAxios = async (url: string, params = {}) => {
   try {
     const response = await axiosClient.get(url, { params });
-    return response.data;
+    return response?.data;
   } catch (error) {
     console.error(`GET ${url} failed:`, error);
     throw error;

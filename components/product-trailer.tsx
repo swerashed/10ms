@@ -3,77 +3,15 @@ import Image from "next/image";
 import { useState, useMemo } from "react";
 import ArrowIcon from "./icons/arrow-icon";
 import PlayIcon from "./icons/play-icon";
+import { MediaItems } from "@/types/global";
 
-const mediaData = [
-  {
-    name: "preview_gallery",
-    resource_type: "video",
-    resource_value: "zrlYnaZftEQ",
-    thumbnail_url:
-      "https://cdn.10minuteschool.com/images/thumbnails/IELTS_new_16_9.png",
-  },
-  {
-    name: "sqr_img",
-    resource_type: "image",
-    resource_value:
-      "https://cdn.10minuteschool.com/images/thumbnails/IELTS_new_1_1.png",
-  },
-  {
-    name: "thumbnail",
-    resource_type: "image",
-    resource_value:
-      "https://cdn.10minuteschool.com/images/thumbnails/IELTS_new_16_9.png",
-  },
-  {
-    name: "preview_gallery",
-    resource_type: "image",
-    resource_value:
-      "https://cdn.10minuteschool.com/images/catalog/media/PDP_Banner-1_1726737298483.png",
-    thumbnail_url: "",
-  },
-  {
-    name: "preview_gallery",
-    resource_type: "image",
-    resource_value:
-      "https://cdn.10minuteschool.com/images/catalog/media/PDP_Banner-2_1726736040872.png",
-    thumbnail_url: "",
-  },
-  {
-    name: "preview_gallery",
-    resource_type: "video",
-    resource_value: "30y-wlDtIIQ",
-    thumbnail_url:
-      "https://cdn.10minuteschool.com/images/catalog/media/introduction_1706097447220.jpg",
-  },
-  {
-    name: "preview_gallery",
-    resource_type: "video",
-    resource_value: "QBz8FX4GE_w",
-    thumbnail_url:
-      "https://cdn.10minuteschool.com/images/catalog/media/QBz8FX4GE_w-HD_1718880944063.jpg",
-  },
-  {
-    name: "book_preview",
-    resource_type: "video",
-    resource_value: "BbtkvRnraok",
-    thumbnail_url:
-      "https://cdn.10minuteschool.com/images/catalog/media/BbtkvRnraok-HD_1718880976960.jpg",
-  },
-  {
-    name: "preview_gallery",
-    resource_type: "video",
-    resource_value: "AvB2ibYd1z4",
-    thumbnail_url:
-      "https://cdn.10minuteschool.com/images/catalog/media/AvB2ibYd1z4-HD_1707647843136.jpg",
-  },
-];
 
-const ProductTrailer = () => {
+const ProductTrailer = ({data}:{data:MediaItems[]}) => {
     // 1. State hooks
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
       const previewGallery = useMemo(
-    () => mediaData.filter((item) => item.name === "preview_gallery"),
+    () => data.filter((item) => item.name === "preview_gallery"),
     []
   );
 
