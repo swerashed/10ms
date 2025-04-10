@@ -15,26 +15,18 @@ function getLocale(request: NextRequest): string {
 }
 
 export function middleware(request: NextRequest) {
-  const langCookie = request.cookies.get('lang')?.value as 'en' | 'bn' | undefined;
-  const manualLang = request.cookies.get('manualLang')?.value as 'en' | 'bn' | undefined;
+  const { pathname } = request.nextUrl;
 
-  const detectedLocale = getLocale(request);
-
-  const response = NextResponse.next();
-
-  if (manualLang) {
-    // Manual language preference: sync lang cookie with manualLang
-    if (langCookie !== manualLang) {
-      response.cookies.set('lang', manualLang, { path: '/', maxAge: 60 * 60 * 24 * 30 });
-    }
-  } else {
-    // Auto-detect language from Accept-Language header
-    if (langCookie !== detectedLocale) {
-      response.cookies.set('lang', detectedLocale, { path: '/', maxAge: 60 * 60 * 24 * 30 });
-    }
+  // Already localized → skip redirect
+  if (locales.some((locale) => pathname.startsWith(`/${locale}`))) {
+    return NextResponse.next();
   }
 
-  return response;
+  // Detect browser language and redirect
+  const detectedLocale = getLocale(request);
+  const redirectUrl = new URL(`/${detectedLocale}${pathname}`, request.url);
+
+  return NextResponse.redirect(redirectUrl);
 }
 
 export const config = {

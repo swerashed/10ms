@@ -1,28 +1,39 @@
-"use server"
+"use server";
 
-import { AppAxios } from "@/lib/axios";
+const defaultHeaders = {
+    'X-TENMS-SOURCE-PLATFORM': 'web',
+    'Accept': 'application/json',
+};
 
-export const getSeoData = async (lang: "en" | "bn" = "en") => {
+export const getSeoData = async (lang: 'en' | 'bn' = 'en') => {
     try {
-        const data = await AppAxios('/ielts-course', {
-            lang: lang
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}?lang=${lang}`, {
+            headers: defaultHeaders,
+            next: { revalidate: 60 }, 
         });
 
-        return  data?.data.seo || {}
-    } catch (error) {
-        console.error('Failed to fetch seo data:', error);
-    }
-}
+        if (!res.ok) throw new Error('Failed to fetch SEO data');
 
-export const getProductData = async (lang: "en" | "bn" = "en") => {
+        const data = await res.json();
+        return data?.seo || {};
+    } catch (error) {
+        console.error('Failed to fetch SEO data:', error);
+        return {};
+    }
+};
+
+export const getProductData = async (lang: 'en' | 'bn' = 'en') => {
     try {
-        const data = await AppAxios('/ielts-course', {
-            lang: lang
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}?lang=${lang}`, {
+            next: { revalidate: 60 }, 
         });
 
-        return  data?.data || {}
-    } catch (error) {
-        console.error('Failed to fetch product data:', error);
-    }
-}
+        if (!res.ok) throw new Error('Failed to fetch Product data');
 
+        const data = await res.json();
+        return data || {};
+    } catch (error) {
+        console.error('Failed to fetch Product data:', error);
+        return {};
+    }
+};

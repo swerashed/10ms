@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const CourseInstructor = () => {
+const CourseInstructor = ({data}) => {
     // 1. State hooks
     // 2. Functions/handlers
     // 3. useEffect or other hooks
@@ -38,7 +38,6 @@ const CourseInstructor = () => {
                 </div>
             </div>
         </div>
-
     );
 };
 

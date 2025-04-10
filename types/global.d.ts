@@ -33,3 +33,9 @@ export interface ProductData {
   description: string
   media: MediaItems[]
 }
+
+export interface TranslatedData {
+    banner_stat: string,
+    cta_label:string,
+    copyright: string
+}
