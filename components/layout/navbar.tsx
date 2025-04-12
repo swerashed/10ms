@@ -4,35 +4,30 @@ import LanguageSwitcher from "../common/language-switcher";
 import { TranslatedData } from "@/types/global";
 
 const Navbar = async ({ translation }: { translation: TranslatedData }) => {
-    // 1. State hooks
-    // 2. Functions/handlers
-    // 3. useEffect or other hooks
-    // 4. scope component or mini component
-
     return (
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3">
-            {/* LOGO */}
-            <Link className="h-[27px] w-[100px]" href="/">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+            {/* Logo */}
+            <Link href="/" className="h-[27px] w-[100px]">
                 <Image
-                    alt="10ms"
-                    priority
+                    src="https://cdn.10minuteschool.com/images/svg/10mslogo-svg.svg"
+                    alt="10 Minute School"
                     width={100}
                     height={27}
-                    src="https://cdn.10minuteschool.com/images/svg/10mslogo-svg.svg"
+                    priority
                 />
             </Link>
 
-
-            {/* Buttons  */}
-            <div className="flex items-center space-x-4 md:space-x-6">
+            {/* Actions */}
+            <div className="flex items-center gap-4 md:gap-6">
                 <LanguageSwitcher />
-                <button className="flex items-center px-3 py-1 text-white rounded-md bg-[#1cab55] md:px-6">
-                    <span className="leading-[18 px] whitespace-nowrap text-[12px] font-semibold leading-[24px] md:text-[16px] md:font-medium">
-                      {translation.cta_label}
+
+                <button className="flex items-center rounded-md bg-[#1cab55] px-3 py-1 md:px-6">
+                    <span className="whitespace-nowrap text-[12px] font-semibold leading-[18px] text-white md:text-[16px] md:font-medium md:leading-[24px]">
+                        {translation.cta_label}
                     </span>
                 </button>
             </div>
-        </div>
+        </nav>
     );
 };
 
