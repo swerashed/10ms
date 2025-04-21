@@ -1,9 +1,61 @@
-export function cleanData(originalData: any) {
-  const requiredFields = ["title", "description", "slug","media", "sections"]
-  const requiredSet = new Set(requiredFields);
-  
-  return Object.fromEntries(
-    Object.entries(originalData)
-          .filter(([key]) => requiredSet.has(key))
+// utils/clean-data.ts
+
+import { CleanedProductData, Media } from "@/types/global";
+
+
+export function cleanData(originalData: any): CleanedProductData | null {
+  const data = originalData?.data;
+
+  // Basic validation to ensure essential data exists
+  if (!data || !data.slug || !data.title || !Array.isArray(data.sections)) {
+    return null;
+  }
+
+  // Process sections into a structured object for easier access
+  const sections = data.sections.reduce((acc: any, section: any) => {
+    switch (section.type) {
+      case 'instructors':
+        acc.instructors = section.values || [];
+        break;
+      case 'features': //  (How the course is laid out)
+        acc.laidOut = section.values || [];
+        break;
+      case 'pointers': //What you will learn)
+        acc.willLearn = section.values || [];
+        break;
+      case 'feature_explanations': //(Exclusive Features)
+        acc.exclusiveFeatures = section.values || [];
+        break;
+      case 'about': //(About the course)
+        acc.courseDetails = section.values || [];
+        break;
+      default:
+        break;
+    }
+    return acc;
+  }, {
+    instructors: [],
+    laidOut: [],
+    willLearn: [],
+    exclusiveFeatures: [],
+    courseDetails: [],
+  });
+
+  const mediaItems: Media[] = data.media || [];
+  const trailer = mediaItems.find(
+    (item) => item.resource_type === 'video' && item.name === 'preview_gallery'
   );
+
+  return {
+    slug: data.slug,
+    title: data.title,
+    description: data.description,
+    cta_text: data.cta_text,
+    media: {
+      trailer: trailer,
+      gallery: mediaItems,
+    },
+    checklist: data.checklist || [],
+    sections,
+  };
 }

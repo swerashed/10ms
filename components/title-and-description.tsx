@@ -2,17 +2,12 @@ import Image from "next/image";
 import ProductTrailer from "./product-trailer";
 import BuyCTA from "./buy-cta";
 import CheckLists from "./check-lists";
-import { ProductData } from "@/types/global";
 import RichTextRenderer from "./common/rich-text-renderer";
-import { cookies } from "next/headers";
-import { bannerData } from "@/constants/global";
+import { CleanedProductData, TranslatedData } from "@/types/global";
 
-const TitleAndDescription = async ({data}: {data: ProductData}) => {
+const TitleAndDescription = async ({ data, translation }: { data: CleanedProductData, translation: TranslatedData }) => {
     // 1. State hooks
     // 2. Functions/handlers
-        // 2. Functions/handlers
-          const cookieStore = cookies();
-          const lang = (await cookieStore).get('lang')?.value as 'en' | 'bn' | undefined || "en"
     // 3. useEffect or other hooks
     // 4. scope component or mini component
 
@@ -20,11 +15,11 @@ const TitleAndDescription = async ({data}: {data: ProductData}) => {
         <>
             <div className='relative'>
                 <div className="mobile-trailer  max-w-7xl mx-auto px-4 flex lg:hidden pt-10">
-                    <ProductTrailer data={data?.media}/>
+                    <ProductTrailer data={data?.media?.gallery || []} />
                 </div>
                 <div className="flex flex-col justify-center gap-3 flex-1 max-w-7xl mx-auto px-4 pb-10 lg:pt-10">
                     <h1 className="text-white mb-2 text-[21px] font-semibold  md:text-4xl">
-                       {data?.title}
+                        {data?.title}
                     </h1>
 
                     <div className="flex flex-row flex-wrap gap-2 text-white">
@@ -38,14 +33,14 @@ const TitleAndDescription = async ({data}: {data: ProductData}) => {
                             />
                         </span>
                         <span className="inline-block text-sm md:text-base">
-                            ({bannerData[lang]?.text})
+
                         </span>
                     </div>
                     <div className="!text-gray-400">
-                        
-                    <RichTextRenderer html={data?.description}/>
+
+                        <RichTextRenderer html={data?.description} />
                     </div>
-    
+
                 </div>
 
 
@@ -53,8 +48,8 @@ const TitleAndDescription = async ({data}: {data: ProductData}) => {
                 <Image src="https://cdn.10minuteschool.com/images/ui_%281%29_1716445506383.jpeg" alt='Background Image for IELTS Course by Munzereen Shahid' height={300} width={1280} className='absolute inset-0 h-full w-full object-cover -z-10' />
             </div>
             <div className="mobile-cta gap-5  max-w-7xl mx-auto px-4 flex flex-col lg:hidden pt-10">
-                <BuyCTA />
-                <CheckLists />
+                <BuyCTA cta={data.cta_text}/>
+                <CheckLists checklists={data.checklist} translation={translation} />
             </div>
         </>
 
