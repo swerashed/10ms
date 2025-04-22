@@ -2,7 +2,7 @@ import Image from "next/image";
 import ProductTrailer from "./product-trailer";
 import BuyCTA from "./buy-cta";
 import CheckLists from "./check-lists";
-import RichTextRenderer from "./common/rich-text-renderer";
+import RichTextRenderer from "../common/rich-text-renderer";
 import { CleanedProductData, TranslatedData } from "@/types/global";
 
 const TitleAndDescription = async ({ data, translation }: { data: CleanedProductData, translation: TranslatedData }) => {

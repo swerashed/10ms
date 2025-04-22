@@ -15,30 +15,30 @@ export function cleanData(originalData: any): CleanedProductData | null {
   const sections = data.sections.reduce((acc: any, section: any) => {
     switch (section.type) {
       case 'instructors':
-        acc.instructors = section.values || [];
+        acc.instructors = section || {};
         break;
       case 'features': //  (How the course is laid out)
-        acc.laidOut = section.values || [];
+        acc.laidOut = section || {};
         break;
       case 'pointers': //What you will learn)
-        acc.willLearn = section.values || [];
+        acc.willLearn = section || {};
         break;
       case 'feature_explanations': //(Exclusive Features)
-        acc.exclusiveFeatures = section.values || [];
+        acc.exclusiveFeatures = section || {};
         break;
       case 'about': //(About the course)
-        acc.courseDetails = section.values || [];
+        acc.courseDetails = section || {};
         break;
       default:
         break;
     }
     return acc;
   }, {
-    instructors: [],
-    laidOut: [],
-    willLearn: [],
-    exclusiveFeatures: [],
-    courseDetails: [],
+    instructors: {},
+    laidOut: {},
+    willLearn: {},
+    exclusiveFeatures: {},
+    courseDetails: {},
   });
 
   const mediaItems: Media[] = data.media || [];

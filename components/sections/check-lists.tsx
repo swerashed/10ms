@@ -1,5 +1,5 @@
-import ChecklistListItem from "./checklist-list-Item";
-import { CheckListsProps } from "@/types/page-component";
+import ChecklistListItem from "../scoped/checklist-list-Item";
+import { CheckListsProps } from "@/types/page-component-props";
 
 
 
