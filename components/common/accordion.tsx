@@ -29,16 +29,19 @@ export default function Accordion({ items }: { items: CourseDetail[] }) {
                             className="w-full flex items-center justify-between py-4 transition"
                             onClick={() => toggleItem(index)}
                         >
-                            <span>{parse(item.title)}</span>
+                            <span className='text-left'>{parse(item.title)}</span>
+                            <span className='shrink-0'>
+
                             {isOpen ? <ChevronUp /> : <ChevronDown />}
+                            </span>
                         </button>
 
                         <div
                             className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                                 }`}
                         >
-                            <div className="overflow-hidden">
-                                <ul className="space-y-2">{renderRichText(item.description)}</ul>
+                            <div className="overflow-hidden ">
+                                <ul className="space-y-2 pb-4">{renderRichText(item.description)}</ul>
                             </div>
                         </div>
                     </div>

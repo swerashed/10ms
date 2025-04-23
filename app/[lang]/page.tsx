@@ -14,8 +14,8 @@ import { getTranslation } from "@/constants/translation"
 import { CleanedProductData } from "@/types/global"
 import { LangParamProps } from "@/types/page-component-props"
 
-export default async function MainPage({params}:LangParamProps) {
-    const  lang  = (await params).lang;
+export default async function MainPage({ params }: LangParamProps) {
+    const lang = (await params).lang;
 
 
     let productData: CleanedProductData | null = null;
@@ -40,40 +40,39 @@ export default async function MainPage({params}:LangParamProps) {
         return <ErrorComponent />
     }
 
-    console.log("product data", productData?.sections.instructors)
 
     return (
-    <main>
-        {/* Title & Description */}
-        <TitleAndDescription data={productData} translation={translation} />
-         <>
-            
-             {/* Main Content Grid */}
-             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl px-5 mx-auto mt-8">
-                 {/* Left Column - Main Content */}
-                 <div className="lg:col-span-2 space-y-6 lg:space-y-10">
-                    <CourseInstructor instructors={productData.sections.instructors} />
-                    <LaidOut laidOutData={productData.sections.laidOut} />
-                    <WillLearn willLearnData={productData.sections.willLearn} />
-                    <ExclusiveFeatures exclusiveFeatures={productData.sections.exclusiveFeatures} />
-                    <CourseDetails courseDetails={productData.sections.courseDetails} /> 
-                     {/*
-                     */}
-                 </div>
+        <main>
+            {/* Title & Description */}
+            <TitleAndDescription data={productData} translation={translation} />
+            <>
 
-                 {/* Right Column - Sidebar */}
-                  <div className="space-y-6">
-                     <div className="hidden lg:flex flex-col sticky top-10 bg-white border border-border p-1">
-                         {productData.media.gallery && (
-                              <ProductTrailer data={productData.media.gallery} />
-                         )}
-                         <BuyCTA cta={productData.cta_text}/>
-                         <CheckLists checklists={productData.checklist} translation={translation}/>
-                     </div>
-                 </div>
-             </div>
-         </>
-    </main>
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl px-5 mx-auto mt-8">
+                    {/* Left Column - Main Content */}
+                    <div className="lg:col-span-2 space-y-6 lg:space-y-10">
+                        <CourseInstructor instructors={productData.sections.instructors} />
+                        <LaidOut laidOutData={productData.sections.laidOut} />
+                        <WillLearn willLearnData={productData.sections.willLearn} />
+                        <ExclusiveFeatures exclusiveFeatures={productData.sections.exclusiveFeatures} />
+                        <CourseDetails courseDetails={productData.sections.courseDetails} />
+                        {/*
+                     */}
+                    </div>
+
+                    {/* Right Column - Sidebar */}
+                    <div className="space-y-6">
+                        <div className="hidden lg:flex flex-col sticky top-10 bg-white border border-border p-1">
+                            {productData.media.gallery && (
+                                <ProductTrailer data={productData.media.gallery} />
+                            )}
+                            <BuyCTA cta={productData.cta_text} />
+                            <CheckLists checklists={productData.checklist} translation={translation} />
+                        </div>
+                    </div>
+                </div>
+            </>
+        </main>
 
     )
 }

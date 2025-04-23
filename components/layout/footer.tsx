@@ -39,7 +39,7 @@ const Footer = async ({translation}: {translation:TranslatedData}) => {
                     ))
                 }
             </div>
-            <p className="text-xs font-normal text-gray-600 md:text-sm">{translation?.copyright}</p>
+            <p className="text-xs font-normal text-gray-600 md:text-sm text-center">{translation?.copyright}</p>
         </footer>
     );
 };
