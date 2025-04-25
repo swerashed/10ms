@@ -6,6 +6,9 @@
   --border: #dbe1eb;
   --dark: #111827;
 }
+@theme{
+  --breakpoint-xs: 470px;
+}
 
 @theme inline {
   --color-background: var(--background);
