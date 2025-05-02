@@ -9,7 +9,6 @@ const TitleAndDescription = async ({ data, translation }: { data: CleanedProduct
     // 1. State hooks
     // 2. Functions/handlers
     // 3. useEffect or other hooks
-    // 4. scope component or mini component
 
     return (
         <>
@@ -33,7 +32,7 @@ const TitleAndDescription = async ({ data, translation }: { data: CleanedProduct
                             />
                         </span>
                         <span className="inline-block text-sm md:text-base">
-
+                            {translation.banner_stat}
                         </span>
                     </div>
                     <div className="!text-gray-400">
