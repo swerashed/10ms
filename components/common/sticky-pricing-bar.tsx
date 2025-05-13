@@ -2,9 +2,11 @@
 import { useEffect, useState } from "react";
 
 export default function StickyPricingBar() {
+  // 1. State hooks
   const [showBar, setShowBar] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-
+  // 2. Functions/handlers
+  // 3. useEffect or other hooks
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -24,6 +26,8 @@ export default function StickyPricingBar() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+  // 4. scope component or mini component
+
 
   return (
     <div

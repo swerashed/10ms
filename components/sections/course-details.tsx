@@ -1,8 +1,8 @@
-import { CourseDetailSection } from "@/types/global";
 import Accordion from "../common/accordion";
 import SectionTitle from "../common/section-title";
+import { CourseDetailsSectionProps } from "@/types/page-component-props";
 
-const CourseDetails = ({courseDetails}:{courseDetails:CourseDetailSection}) => {
+const CourseDetails = ({ courseDetails }: CourseDetailsSectionProps) => {
     // 1. State hooks
     // 2. Functions/handlers
     // 3. useEffect or other hooks

@@ -1,8 +1,6 @@
 import ChecklistListItem from "../scoped/checklist-list-Item";
 import { CheckListsProps } from "@/types/page-component-props";
 
-
-
 const CheckLists = ({ checklists, translation }: CheckListsProps) => {
     // 1. State hooks
     // 2. Functions/handlers

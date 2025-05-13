@@ -1,8 +1,8 @@
 import Image from "next/image"
 import CheckIcon from "../icons/check-icon"
-import { ExclusiveFeature } from "@/types/global"
+import { FeatureCardProps } from "@/types/page-component-props"
 
-const FeatureCard = ({ item }: { item: ExclusiveFeature }) => {
+const FeatureCard = ({ item }: FeatureCardProps) => {
     // 1. State hooks
     // 2. Functions/handlers
     // 3. useEffect or other hooks
@@ -23,7 +23,7 @@ const FeatureCard = ({ item }: { item: ExclusiveFeature }) => {
                     {item.title}
                 </h2>
                 {
-                    item.checklist.map((feature, index) => (
+                    item.checklist.map((feature:string, index: number) => (
                         <FeatureListItem key={index} feature={feature} />
                     ))
                 }

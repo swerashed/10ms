@@ -3,9 +3,9 @@ import ProductTrailer from "./product-trailer";
 import BuyCTA from "./buy-cta";
 import CheckLists from "./check-lists";
 import RichTextRenderer from "../common/rich-text-renderer";
-import { CleanedProductData, TranslatedData } from "@/types/global";
+import { TitleAndDescriptionProps } from "@/types/page-component-props";
 
-const TitleAndDescription = async ({ data, translation }: { data: CleanedProductData, translation: TranslatedData }) => {
+const TitleAndDescription = async ({ data, translation }: TitleAndDescriptionProps) => {
     // 1. State hooks
     // 2. Functions/handlers
     // 3. useEffect or other hooks

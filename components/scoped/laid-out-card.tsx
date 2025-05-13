@@ -1,7 +1,7 @@
-import { LaidOutItem } from "@/types/global"
+import { LaidOutCardProps} from "@/types/page-component-props"
 import Image from "next/image"
 
-const LaidOutCard = ({ item }: { item: LaidOutItem }) => {
+const LaidOutCard = ({ item }:LaidOutCardProps) => {
     return (
         <div className="flex flex-row items-start gap-3 m-1 ">
             <div

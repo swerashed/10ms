@@ -3,10 +3,10 @@ import Image from "next/image";
 import { useState, useMemo } from "react";
 import ArrowIcon from "../icons/arrow-icon";
 import PlayIcon from "../icons/play-icon";
-import { Media } from "@/types/global";
+import { ProductTrailerProps } from "@/types/page-component-props";
 
 
-const ProductTrailer = ({ data }: { data: Media[] }) => {
+const ProductTrailer = ({ data }: ProductTrailerProps) => {
   // 1. State hooks
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -46,7 +46,6 @@ const ProductTrailer = ({ data }: { data: Media[] }) => {
   }
   const currentItem = previewGallery[currentIndex];
 
-  // CHANGED: Use explicit logic to determine the source URL
   const mainDisplaySrc =
     currentItem.resource_type === "video"
       ? currentItem.thumbnail_url
@@ -114,7 +113,6 @@ const ProductTrailer = ({ data }: { data: Media[] }) => {
 
         <div className="flex gap-4 py-4 pl-1 overflow-x-auto no-scrollbar">
           {previewGallery.map((item, index) => {
-            // CHANGED: Use explicit logic to determine the thumbnail source URL
             const thumbnailSrc =
               item.resource_type === "video"
                 ? item.thumbnail_url
