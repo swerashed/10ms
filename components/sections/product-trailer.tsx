@@ -12,9 +12,8 @@ const ProductTrailer = ({ data }: ProductTrailerProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const previewGallery = useMemo(
     () => data.filter((item) => item.name === "preview_gallery"),
-    []
+    [data]
   );
-
 
   // 2. Functions/handlers
   const handleNext = () => {
@@ -130,8 +129,8 @@ const ProductTrailer = ({ data }: ProductTrailerProps) => {
               >
                 <div
                   className={`relative w-[55px] aspect-video rounded cursor-pointer overflow-hidden outline ${isActive
-                      ? "outline-[2px] outline-offset-2 outline-[#1CAB55]"
-                      : "outline-none"
+                    ? "outline-[2px] outline-offset-2 outline-[#1CAB55]"
+                    : "outline-none"
                     }`}
                 >
                   <Image

@@ -19,9 +19,11 @@ export async function generateStaticParams() {
 }
 
 //SEO META START
-export async function generateMetadata({params}:LangParamProps): Promise<Metadata> {
-  const lang = (await params).lang 
+export async function generateMetadata({ params }: LangParamProps): Promise<Metadata> {
+  const lang = (await params).lang
   const seoData: SEOData = await getSeoData(lang);
+  const ogImageMeta = seoData.defaultMeta.find(meta => meta.value === 'og:image');
+  const ogImageTypeMeta = seoData.defaultMeta.find(meta => meta.value === 'og:image:type');
   return {
     title: seoData?.title || "10 Minute School",
     description: seoData?.description || "10 Minute School",
@@ -30,11 +32,11 @@ export async function generateMetadata({params}:LangParamProps): Promise<Metadat
       title: seoData?.title,
       description: seoData?.description,
       type: "website",
-      images: seoData?.defaultMeta.find(meta => meta.value === 'og:image')?.content
+      images: ogImageMeta?.content
         ? [
           {
-            url: seoData.defaultMeta.find(meta => meta.value === 'og:image')?.content!,
-            type: seoData.defaultMeta.find(meta => meta.value === 'og:image:type')?.content || 'image/jpeg',
+            url: ogImageMeta.content,
+            type: ogImageTypeMeta?.content || 'image/jpeg',
           },
         ]
         : [],
@@ -47,8 +49,8 @@ export async function generateMetadata({params}:LangParamProps): Promise<Metadat
 }
 //SEO META END
 
-export default async function RootLayout({children,params}: LayoutParams) {
-  const { lang } = await params;
+export default async function RootLayout({ children, params }: LayoutParams) {
+  const lang  = (await params).lang;
   const translation = await getTranslation(lang);
 
   return (
@@ -56,7 +58,7 @@ export default async function RootLayout({children,params}: LayoutParams) {
       <body className={inter.className}>
         <Navbar translation={translation} />
         {children}
-        <StickyPricingBar/>
+        <StickyPricingBar />
         <Footer translation={translation} />
       </body>
     </html>

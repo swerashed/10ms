@@ -12,16 +12,12 @@ export type CheckListsProps = {
 };
 
 export type LangParamProps = {
-    params: {
-        lang: 'en' | 'bn';
-    };
+    params: Promise<{ lang: 'en' | 'bn' }>
 };
 
 export type LayoutParams = Readonly<{
     children: React.ReactNode;
-    params: {
-        lang: 'en' | 'bn';
-    };
+    params: Promise<{ lang: 'en' | 'bn' }>;
 }>;
 
 /* Section Component Props */
