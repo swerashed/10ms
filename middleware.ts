@@ -17,8 +17,15 @@ function getLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Already localized → skip redirect
+  // If the pathname already starts with a valid locale, continue.
   if (locales.some((locale) => pathname.startsWith(`/${locale}`))) {
+    return NextResponse.next();
+  }
+
+  // If pathname starts with a string that LOOKS like a locale but is invalid → Let it 404.
+  const firstPathSegment = pathname.split('/')[1];
+  if (firstPathSegment && firstPathSegment.length === 2 && !locales.includes(firstPathSegment)) {
+    // Let Next.js 404 handle it (do not redirect)
     return NextResponse.next();
   }
 
