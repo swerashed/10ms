@@ -15,12 +15,10 @@ This guide outlines conventions and best practices for building scalable, mainta
 /components                 # Reusable UI components
   /common                   # Generic UI (Button, Input, Modal)
   /layout                   # Layout-related components
-  /dashboard                # Specific to dashboard pages only
+  /scope                    # Component used only on single pages.
 
 /hooks                      # All React/Next.js custom hooks
-  useAuth.ts
-  useUser.ts
-  useDebounce.ts
+  useRichText.ts
 
 /providers                      # State managements lib or Other providers
   store.ts
@@ -114,25 +112,9 @@ This guide outlines conventions and best practices for building scalable, mainta
     );
     
     ```
-    
-----------
-## Tools Used
-- React Hook Form (For Form and Inputs), [Lib Link](https://www.npmjs.com/package/react-hook-form)
-- RTQ Query (For fetching and mutation), [Lib Link](https://redux-toolkit.js.org/rtk-query/overview)
-- Redux (For state Management) [Lib link](https://react-redux.js.org/introduction/getting-started)
-- Axios (For data fetching) [Lib Link](https://www.npmjs.com/package/axios)
 ----------
 
 ## ❗ Error Handling
 
 
-----------
 
-## ✅ Summary Checklist
-
--   Use PascalCase for function names, kebab-case for file names
--   Co-locate component-only sub-components
--   Define all prop types/interfaces
--   If a package or tool is already added do not use other tools or package if a new tool is needed it to this readme.
--   Organize files according to project folder structure
--   Separate logic into `/services`, `/lib`, and `/utils`
