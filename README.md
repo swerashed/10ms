@@ -72,7 +72,7 @@ const MyComponent = ({ title }: Props) => {
 
 ## 🔗 Live Preview
 
-[https://rashed-10ms-assessment-nl38lt1ro-md-rashed-alis-projects.vercel.app/en](https://rashed-10ms-assessment-nl38lt1ro-md-rashed-alis-projects.vercel.app/en)
+[https://rashed-10ms-assessment.vercel.app](https://rashed-10ms-assessment.vercel.app/en)
 
 > *Note:* Submitted preview URL due to uncertainty with GitHub build version.
 
