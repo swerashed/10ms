@@ -48,7 +48,9 @@ export default async function MainPage({
                 {/* Right Column - Sidebar */}
                 <div className="space-y-6">
                     {/* Trailer */}
-                   <ProductTrailer/>
+                    <div className="hidden lg:flex">
+                        <ProductTrailer />
+                    </div>
 
                     {/* CTA */}
                     <div className="bg-blue-100 border border-gray-400 p-4 text-center">

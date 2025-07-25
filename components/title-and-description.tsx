@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ProductTrailer from "./product-trailer";
 
 const TitleAndDescription = () => {
     // 1. State hooks
@@ -8,7 +9,10 @@ const TitleAndDescription = () => {
 
     return (
         <div className='relative'>
-            <div className="flex flex-col justify-center flex-1 max-w-7xl mx-auto px-4 py-10 min-h-[300px]">
+            <div className="mobile-trailer  max-w-7xl mx-auto px-4 flex lg:hidden pt-10">
+                <ProductTrailer />
+            </div>
+            <div className="flex flex-col justify-center flex-1 max-w-7xl mx-auto px-4 pb-10 lg:pt-10">
                 <h1 className="text-white mb-2 text-[21px] font-semibold  md:text-4xl">
                     IELTS Course by Munzereen Shahid
                 </h1>
