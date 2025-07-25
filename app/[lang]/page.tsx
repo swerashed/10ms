@@ -1,4 +1,5 @@
 import CourseInstructor from "@/components/course-instructor"
+import LaidOut from "@/components/laid-out"
 import TitleAndDescription from "@/components/title-and-description"
 
 export default async function MainPage({
@@ -20,16 +21,14 @@ export default async function MainPage({
             {/* Main Content Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mt-8">
                 {/* Left Column - Main Content */}
-                <div className="lg:col-span-2 space-y-6">
-                 
+                <div className="lg:col-span-2 space-y-6 lg:space-y-10">
+
 
                     {/* Instructors */}
-                   <CourseInstructor/>
+                    <CourseInstructor />
 
                     {/* How the course is laid out */}
-                    <div className="bg-blue-100 border border-gray-400 p-6 text-center">
-                        <h3 className="text-sm font-medium text-gray-700">How the course is laid out (will be in sections, array type=features)</h3>
-                    </div>
+                    <LaidOut />
 
                     {/* What you will learn */}
                     <div className="bg-blue-100 border border-gray-400 p-6 text-center">
