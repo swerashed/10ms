@@ -123,8 +123,8 @@ const handleNext = () => {
 
   return (
     <div className="w-full bg-transparent">
-      <div className="p-1 block rounded-lg overflow-hidden">
-        <div className="relative overflow-hidden bg-black youtube-video aspect-video select-none  rounded-lg">
+      <div className="p-1 block rounded-lg overflow-hidden lg:rounded-none">
+        <div className="relative overflow-hidden bg-black youtube-video aspect-video select-none  rounded-lg lg:rounded-none">
           {isPlaying && currentItem.resource_type === "video" ? (
             <iframe
               src={`https://www.youtube.com/embed/${currentItem.resource_value}?autoplay=1&rel=0`}
