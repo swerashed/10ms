@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const TitleAndDescription = ({ title }: { title: string }) => {
+const TitleAndDescription = () => {
     // 1. State hooks
     // 2. Functions/handlers
     // 3. useEffect or other hooks
