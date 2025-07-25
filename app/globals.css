@@ -25,5 +25,17 @@
 
 body {
   background: #FFFFFF;
-   font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
+}
+
+/* HIDE SCROLLBAR  */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Hides the scrollbar entirely */
+  overflow: auto;
+  /* Ensures content is scrollable */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
