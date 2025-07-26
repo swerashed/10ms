@@ -1,4 +1,3 @@
-// middleware.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
@@ -7,34 +6,30 @@ const locales = ['en', 'bn'];
 const defaultLocale = 'en';
 
 function getLocale(request: NextRequest): string {
-  // 1. Get the headers from the request
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-  // 2. Use Negotiator to get the user's preferred languages
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
-  // 3. Use the matcher to find the best supported locale
   return matchLocale(languages, locales, defaultLocale);
 }
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const langCookie = request.cookies.get('lang')?.value as 'en' | 'bn' | undefined;
+  const manualLang = request.cookies.get('manualLang')?.value === 'true';
 
-  // Check if the path already has a locale (e.g., /en/details, /bn/details)
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  );
+  const detectedLocale = getLocale(request);
 
-  if (pathnameHasLocale) {
-    return NextResponse.next();
+  const response = NextResponse.next();
+
+  if (!manualLang) {
+    // Auto-sync lang cookie with Accept-Language (if not manually overridden)
+    if (langCookie !== detectedLocale) {
+      response.cookies.set('lang', detectedLocale, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+    }
   }
 
-  // If no locale, redirect to the best match
-  const locale = getLocale(request);
-  request.nextUrl.pathname = `/${locale}${pathname}`;
-  
-  return NextResponse.redirect(request.nextUrl);
+  return response;
 }
 
 export const config = {
