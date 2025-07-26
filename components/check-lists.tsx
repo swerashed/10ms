@@ -25,7 +25,7 @@ const CheckLists = () => {
     }
 
     return (
-        <div className="hidden md:block">
+        <div className="block">
             <div className="grid py-2 md:p-4">
                 <p className="mb-4 text-xl font-semibold">এই কোর্সে যা থাকছে</p>
                 <ListItem />

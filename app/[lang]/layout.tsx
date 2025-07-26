@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { Inter } from 'next/font/google';
+import Footer from "@/components/layout/footer";
+import Navbar from "@/components/layout/navbar";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -21,12 +23,14 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode
-  params: Promise<{ lang: 'en-US' | 'de' }>
+  params: Promise<{ lang: 'en' | 'bn' }>
 }>) {
   return (
     <html lang={(await params).lang}>
       <body className={inter.className}>
+        <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
