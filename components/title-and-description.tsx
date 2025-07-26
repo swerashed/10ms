@@ -2,10 +2,17 @@ import Image from "next/image";
 import ProductTrailer from "./product-trailer";
 import BuyCTA from "./buy-cta";
 import CheckLists from "./check-lists";
+import { ProductData } from "@/types/global";
+import RichTextRenderer from "./common/rich-text-renderer";
+import { cookies } from "next/headers";
+import { bannerData } from "@/constants/global";
 
-const TitleAndDescription = () => {
+const TitleAndDescription = async ({data}: {data: ProductData}) => {
     // 1. State hooks
     // 2. Functions/handlers
+        // 2. Functions/handlers
+          const cookieStore = cookies();
+          const lang = (await cookieStore).get('lang')?.value as 'en' | 'bn' | undefined || "en"
     // 3. useEffect or other hooks
     // 4. scope component or mini component
 
@@ -13,11 +20,11 @@ const TitleAndDescription = () => {
         <>
             <div className='relative'>
                 <div className="mobile-trailer  max-w-7xl mx-auto px-4 flex lg:hidden pt-10">
-                    <ProductTrailer />
+                    <ProductTrailer data={data?.media}/>
                 </div>
                 <div className="flex flex-col justify-center gap-3 flex-1 max-w-7xl mx-auto px-4 pb-10 lg:pt-10">
                     <h1 className="text-white mb-2 text-[21px] font-semibold  md:text-4xl">
-                        IELTS Course by Munzereen Shahid
+                       {data?.title}
                     </h1>
 
                     <div className="flex flex-row flex-wrap gap-2 text-white">
@@ -31,25 +38,14 @@ const TitleAndDescription = () => {
                             />
                         </span>
                         <span className="inline-block text-sm md:text-base">
-                            (82.6% শিক্ষার্থী কোর্স শেষে ৫ রেটিং দিয়েছেন)
+                            ({bannerData[lang]?.text})
                         </span>
                     </div>
-
-                    <div
-                        className="text-gray-400 "
-                        style={{ overflow: "hidden", height: "auto", maskImage: "none" }}
-                    >
-                        <div>
-                            <p className="tenms__paragraph" dir="ltr">
-                                <span style={{ whiteSpace: "pre-wrap" }}>
-                                    Academic IELTS এবং General Training IELTS- এর কমপ্লিট প্রিপারেশন
-                                    নিন একটি কোর্সেই! দেশসেরা IELTS Instructor এর গাইডলাইনে আপনার
-                                    কাঙ্ক্ষিত ব্যান্ড স্কোরটি অর্জন করতে আজই জয়েন করুন আমাদের IELTS
-                                    Course-এ।{" "}
-                                </span>
-                            </p>
-                        </div>
+                    <div className="!text-gray-400">
+                        
+                    <RichTextRenderer html={data?.description}/>
                     </div>
+    
                 </div>
 
 

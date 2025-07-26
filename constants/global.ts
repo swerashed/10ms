@@ -42,9 +42,17 @@ export const navbarData = {
     bn:{
         cta_label: " লগ-ইন",
     }
-
 }
 
+
+export const bannerData = {
+    en: {
+        text: "82.6% of students gave a 5 rating at the end of the course"
+    },
+    bn: {
+        text: "82.6% শিক্ষার্থী কোর্স শেষে ৫ রেটিং দিয়েছেন"
+    }
+}
 
 export const languageOptions = {
     en: "EN",

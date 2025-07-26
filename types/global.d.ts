@@ -5,7 +5,7 @@ export type CourseDetailsValue = {
   icon: string;
 };
 
-type SEOData = {
+export type SEOData = {
   title: string;
   description: string;
   keywords: string[];
@@ -20,3 +20,16 @@ type SEOData = {
     type: string;
   }[];
 };
+
+export interface MediaItems {
+  name: string,
+  resource_type: string,
+  resource_value: string,
+  thumbnail_url: string
+}
+export interface ProductData {
+  slug: string,
+  title: string,
+  description: string
+  media: MediaItems[]
+}

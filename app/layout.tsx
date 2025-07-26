@@ -13,7 +13,9 @@ const inter = Inter({
 
 
 export async function generateMetadata(): Promise<Metadata> {
-  const seo: SEOData = await getSeoData('en');
+  const cookieStore = cookies();
+  const lang = (await cookieStore).get('lang')?.value as 'en' | 'bn' | undefined || "en";
+  const seo: SEOData = await getSeoData(lang);
   if (!seo) return {};
   const ogData = seo.defaultMeta.reduce((acc, meta) => {
     if (meta.value.startsWith('og:')) {
@@ -56,7 +58,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const cookieStore = cookies();
   const langCookie = (await cookieStore).get('lang')?.value as 'en' | 'bn' | undefined;
   return (
@@ -64,7 +66,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
       <body className={inter.className}>
         <Navbar />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
