@@ -15,7 +15,7 @@ export const getSeoData = async (lang: 'en' | 'bn' = 'en') => {
         if (!res.ok) throw new Error('Failed to fetch SEO data');
 
         const data = await res.json();
-        return data?.seo || {};
+        return data?.data?.seo || {};
     } catch (error) {
         console.error('Failed to fetch SEO data:', error);
         return {};
