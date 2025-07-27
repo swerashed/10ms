@@ -11,64 +11,69 @@ import { getProductData } from '@/services/product';
 import ErrorComponent from '@/components/common/error-component';
 import { cleanData } from '@/utils/clean-data';
 import { getTranslation } from "@/constants/translation"
-
-
+import { CleanedProductData } from "@/types/global"
 
 export default async function MainPage({
     params,
 }: {
-    params: Promise<{ lang: 'en' | 'bn' }>
+    params: { lang: 'en' | 'bn' }
 }) {
-    const { lang } = await params
-    const dict = await getTranslation(lang)
+    const { lang } = params;
 
-    console.log(dict)
-    let productData = null;
+    let productData: CleanedProductData | null = null;
+    let translation = null;
     let hasError = false;
 
     try {
-        productData = await getProductData(lang);
+        const [translationRes, productRes] = await Promise.all([
+            getTranslation(lang),
+            getProductData(lang)
+        ]);
+
+        translation = translationRes;
+        productData = cleanData(productRes);
+
+        if (!productData) {
+            throw new Error('Invalid or incomplete product data after cleaning.');
+        }
+
     } catch (error) {
+        console.error('Error loading page data:', error);
         hasError = true;
     }
 
-    if (hasError || !productData) {
+    if (hasError || !productData || !translation) {
         return <ErrorComponent />
     }
 
-    console.log("clean data", cleanData(productData))
-
-return null
+    console.log("product data", productData)
 
     return (
-        <div></div>
+    <main>
+        {/* Title & Description */}
+        <TitleAndDescription data={productData} translation={translation} />
+    </main>
         // <>
-        //     {/* Title & Description*/}
-        //     <TitleAndDescription data={productData} />
-
+        //    
         //     {/* Main Content Grid */}
         //     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl px-5 mx-auto mt-8">
         //         {/* Left Column - Main Content */}
         //         <div className="lg:col-span-2 space-y-6 lg:space-y-10">
-        //             {/* Instructors */}
-        //             <CourseInstructor data={productData.sections} />
-        //             {/* How the course is laid out */}
-        //             <LaidOut />
-        //             {/* What you will learn */}
-        //             <WillLearn />
-        //             {/* Course Exclusive Feature */}
-        //             <ExclusiveFeatures />
-        //             {/* Course details */}
-        //             <CourseDetails />
+        //             <CourseInstructor data={productData.sections.instructors} />
+        //             <LaidOut data={productData.sections.laidOut} />
+        //             <WillLearn data={productData.sections.willLearn} />
+        //             <ExclusiveFeatures data={productData.sections.exclusiveFeatures} />
+        //             <CourseDetails data={productData.sections.courseDetails} />
         //         </div>
 
         //         {/* Right Column - Sidebar */}
         //         <div className="space-y-6">
-        //             {/* Trailer, CTA & Check Lists */}
         //             <div className="hidden lg:flex flex-col sticky top-10 bg-white border border-border p-1">
-        //                 <ProductTrailer data={productData?.media} />
+        //                 {productData.media.trailer && (
+        //                      <ProductTrailer trailer={productData.media.trailer} />
+        //                 )}
         //                 <BuyCTA />
-        //                 <CheckLists />
+        //                 <CheckLists data={productData.checklist} />
         //             </div>
         //         </div>
         //     </div>
