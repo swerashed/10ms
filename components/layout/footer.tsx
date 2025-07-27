@@ -1,13 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { cookies } from 'next/headers';
 import { footerData } from "@/constants/global";
+import { TranslatedData } from "@/types/global";
 
-const Footer = async() => {
+const Footer = async ({translation}: {translation:TranslatedData}) => {
     // 1. State hooks
     // 2. Functions/handlers
-      const cookieStore = cookies();
-      const lang = (await cookieStore).get('lang')?.value as 'en' | 'bn' | undefined || "en"
     // 3. useEffect or other hooks
     // 4. scope component or mini component
 
@@ -41,7 +39,7 @@ const Footer = async() => {
                     ))
                 }
             </div>
-            <p className="text-xs font-normal text-gray-600 md:text-sm">{footerData[lang].copyright}</p>
+            <p className="text-xs font-normal text-gray-600 md:text-sm">{translation?.copyright}</p>
         </footer>
     );
 };

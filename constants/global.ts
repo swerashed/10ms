@@ -27,35 +27,4 @@ export const footerData = {
             image: "https://cdn.10minuteschool.com/images/Tiktok_1695731564895.png"
         }
     ],
-    en: {
-        copyright: "2015 - 2025 Copyright © 10 Minute School. All rights reserved."
-    },
-    bn: {
-        copyright: "স্বত্ব © ২০১৫ - ২০২৫ টেন মিনিট স্কুল কর্তৃক সর্বস্বত্ব সংরক্ষিত"
-    }
 }
-
-export const navbarData = {
-    en:{
-        cta_label: "Login",
-    },
-    bn:{
-        cta_label: " লগ-ইন",
-    }
-}
-
-
-export const bannerData = {
-    en: {
-        text: "82.6% of students gave a 5 rating at the end of the course"
-    },
-    bn: {
-        text: "82.6% শিক্ষার্থী কোর্স শেষে ৫ রেটিং দিয়েছেন"
-    }
-}
-
-export const languageOptions = {
-    en: "EN",
-    bn: "BN",
-    system: "System",
-};
