@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import LanguageSwitcher from "../common/language-switcher";
-import { TranslatedData } from "@/types/global";
+import { NavbarProps } from "@/types/page-component-props";
 
-const Navbar = async ({ translation }: { translation: TranslatedData }) => {
+
+const Navbar = async ({ translation }:NavbarProps) => {
     return (
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
             {/* Logo */}

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { footerData } from "@/constants/global";
-import { TranslatedData } from "@/types/global";
+import { FooterProps } from "@/types/page-component-props";
 
-const Footer = async ({translation}: {translation:TranslatedData}) => {
+const Footer = async ({ translation }: FooterProps) => {
     // 1. State hooks
     // 2. Functions/handlers
     // 3. useEffect or other hooks

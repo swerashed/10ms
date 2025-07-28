@@ -1,4 +1,9 @@
-import { Instructor, InstructorSection, LaidOutSection } from "./global";
+import {
+    Instructor,
+    InstructorSection,
+    LaidOutSection,
+    WillLearnItem
+} from "./global";
 
 /* Page and Components Props */
 export type CheckListsProps = {
@@ -8,9 +13,10 @@ export type CheckListsProps = {
 
 export type LangParamProps = {
     params: {
-        lang: 'en' | 'bn'
-    }
-}
+        lang: 'en' | 'bn';
+    };
+};
+
 export type LayoutParams = Readonly<{
     children: React.ReactNode;
     params: {
@@ -18,10 +24,59 @@ export type LayoutParams = Readonly<{
     };
 }>;
 
-
+/* Section Component Props */
 export interface InstructorsProps {
-  instructors: InstructorSection;
-};
+    instructors: InstructorSection;
+}
+
 export interface LaidOutProps {
-  laidOutData: LaidOutSection;
+    laidOutData: LaidOutSection;
+}
+
+export type WillLearnSectionProps = {
+    willLearnData: WillLearnSection;
 };
+
+export type CourseDetailsSectionProps = {
+    courseDetails: CourseDetailSection;
+};
+
+export type ExclusiveFeatureSectionProps = {
+    exclusiveFeatures: ExclusiveFeatureSection;
+};
+
+/* UI Component Props */
+export type NavbarProps = {
+    translation: TranslatedData;
+};
+
+export type AccordionProps = {
+    items: CourseDetail[];
+};
+
+export type FeatureCardProps = {
+    item: ExclusiveFeature;
+};
+
+export type LaidOutCardProps = {
+    item: LaidOutItem;
+};
+
+export type WillLearnCardProps = {
+    item: WillLearnItem;
+};
+
+export type BuyCTAProps = {
+    cta: CTAText;
+};
+
+export type ProductTrailerProps = {
+    data: Media[];
+};
+
+export type TitleAndDescriptionProps = {
+    data: CleanedProductData;
+    translation: TranslatedData;
+};
+
+export type FooterProps = NavbarProps & {};

@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import parse from 'html-react-parser';
 import { useRichText } from '@/hooks/useRichText';
-import { CourseDetail } from '@/types/global';
+import { AccordionProps } from '@/types/page-component-props';
 
 
 
-export default function Accordion({ items }: { items: CourseDetail[] }) {
+export default function Accordion({ items }:AccordionProps) {
     // 1. State hooks
     const [openIndex, setOpenIndex] = useState<number | null>(null);
     // 2. Functions/handlers

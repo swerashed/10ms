@@ -1,6 +1,6 @@
-import { CTAText } from "@/types/global";
+import { BuyCTAProps } from "@/types/page-component-props";
 
-const BuyCTA = ({ cta }: { cta: CTAText }) => {
+const BuyCTA = ({ cta }:BuyCTAProps) => {
     // 1. State hooks
     // 2. Functions/handlers
     // 3. useEffect or other hooks
