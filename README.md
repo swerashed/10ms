@@ -1,11 +1,7 @@
-Sure! Here's a concise, polished, and professional README update for your assessment, focusing on clarity and key info:
-
----
 
 # 🛠 Project Structure & Component Design Guide
 
 This document summarizes the conventions and best practices followed in building a scalable Next.js (App Router) project with TypeScript.
-
 ---
 
 ## 📂 Project Structure Overview
@@ -64,18 +60,33 @@ const MyComponent = ({ title }: Props) => {
 
 ## ⚠️ Notes
 
+  
+
 * Types are strictly defined for all props and state.
+
 * Error handling is implemented on pages where needed.
+
 * Robots.txt is configured to block Google indexing (no SEO concerns for this assessment).
 
+  
+
 ---
+
+  
 
 ## 🔗 Live Preview
 
-[https://rashed-10ms-assessment.vercel.app](https://rashed-10ms-assessment.vercel.app/en)
+  
 
-> *Note:* Submitted preview URL due to uncertainty with GitHub build version.
+[https://rashed-10ms-assessment.vercel.app](https://rashed-10ms-assessment.vercel.app)
+
+  
+  
+
+>  *Note:* I’m submitting the live URL because I’m not sure about the GitHub build version.
+
+> No need to worry about search indexing — I’ve blocked all crawlers from indexing the site.
 
 ---
 
-Let me know if you want it even more minimal or focused on any particular part!
+Thanks
