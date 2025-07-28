@@ -20,10 +20,10 @@ export async function generateStaticParams() {
 
 //SEO META START
 export async function generateMetadata({ params }: LangParamProps): Promise<Metadata> {
-  const lang = (await params).lang
+  const lang = (await params)?.lang
   const seoData: SEOData = await getSeoData(lang);
-  const ogImageMeta = seoData.defaultMeta.find(meta => meta.value === 'og:image');
-  const ogImageTypeMeta = seoData.defaultMeta.find(meta => meta.value === 'og:image:type');
+  const ogImageMeta = seoData?.defaultMeta?.find(meta => meta?.value === 'og:image');
+  const ogImageTypeMeta = seoData?.defaultMeta?.find(meta => meta?.value === 'og:image:type');
   return {
     title: seoData?.title || "10 Minute School",
     description: seoData?.description || "10 Minute School",
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: LangParamProps): Promise<Meta
       images: ogImageMeta?.content
         ? [
           {
-            url: ogImageMeta.content,
+            url: ogImageMeta?.content,
             type: ogImageTypeMeta?.content || 'image/jpeg',
           },
         ]
