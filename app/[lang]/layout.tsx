@@ -7,6 +7,7 @@ import { Metadata } from "next";
 import { SEOData } from "@/types/global";
 import { getSeoData } from "@/services/product";
 import { LangParamProps, LayoutParams } from "@/types/page-component-props";
+import StickyPricingBar from "@/components/common/sticky-pricing-bar";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -55,6 +56,7 @@ export default async function RootLayout({children,params}: LayoutParams) {
       <body className={inter.className}>
         <Navbar translation={translation} />
         {children}
+        <StickyPricingBar/>
         <Footer translation={translation} />
       </body>
     </html>
