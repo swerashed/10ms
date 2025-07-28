@@ -16,7 +16,7 @@ export default function NotFound() {
                 </div>
                 <h1 className="mt-6 text-4xl font-bold text-slate-800 lg:text-5xl">404 - Page not found</h1>
                 <p className="mt-4 text-slate-600 text-base lg:text-lg">
-                    The page you are looking for doesn't exist or <br className="hidden sm:block" /> has been removed.
+                    The page you are looking for doesn&apos;t exist or <br className="hidden sm:block" /> has been removed.
                 </p>
                 <Link href="/">
                     <span className="mt-6 inline-block px-6 py-3 bg-red-600 text-white text-sm font-medium rounded-lg shadow hover:bg-red-700 transition duration-300">
