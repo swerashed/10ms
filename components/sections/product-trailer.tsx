@@ -1,8 +1,8 @@
 "use client"
 import Image from "next/image";
 import { useState, useMemo } from "react";
-import ArrowIcon from "./icons/arrow-icon";
-import PlayIcon from "./icons/play-icon";
+import ArrowIcon from "../icons/arrow-icon";
+import PlayIcon from "../icons/play-icon";
 import { Media } from "@/types/global";
 
 

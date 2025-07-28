@@ -6,6 +6,7 @@ import { getTranslation } from "@/constants/translation";
 import { Metadata } from "next";
 import { SEOData } from "@/types/global";
 import { getSeoData } from "@/services/product";
+import { LangParamProps, LayoutParams } from "@/types/page-component-props";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,12 +18,9 @@ export async function generateStaticParams() {
 }
 
 //SEO META START
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: 'en' | 'bn' };
-}): Promise<Metadata> {
-  const seoData: SEOData = await getSeoData(params.lang);
+export async function generateMetadata({params}:LangParamProps): Promise<Metadata> {
+  const lang = (await params).lang 
+  const seoData: SEOData = await getSeoData(lang);
   return {
     title: seoData?.title || "10 Minute School",
     description: seoData?.description || "10 Minute School",
@@ -48,14 +46,8 @@ export async function generateMetadata({
 }
 //SEO META END
 
-export default async function RootLayout({
-  children,
-  params,
-}: Readonly<{
-  children: React.ReactNode;
-  params: { lang: 'en' | 'bn' };
-}>) {
-  const { lang } = params;
+export default async function RootLayout({children,params}: LayoutParams) {
+  const { lang } = await params;
   const translation = await getTranslation(lang);
 
   return (
