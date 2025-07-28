@@ -13,24 +13,22 @@ const CourseInstructor = ({ instructors }: InstructorsProps) => {
             <p className="section-title text-xl font-semibold md:text-2xl">{instructors.name}</p>
             {
                 instructors.values.map((instructor) => (
-                    <div key={instructor.slug} className="flex items-center md:rounded-md md:border md:border-border overflow-hidden">
-                        <div className="h-full w-full max-w-[150px] flex">
-                            <Image
-                                alt={instructor.name}
-                                priority
-                                width={73}
-                                height={100}
-                                quality={100}
-                                src={instructor.image}
-                                className="h-full w-full max-w-[150px] object-cover"
-                            />
-                        </div>
+                    <div key={instructor.slug} className="flex flex-col gap-2.5  xs:flex-row items-center md:rounded-md md:border md:border-border overflow-hidden">
+                        <Image
+                            alt={instructor.name}
+                            priority
+                            width={150}
+                            height={180}
+                            quality={100}
+                            src={instructor.image}
+                            className="h-auto w-full xs:max-w-[200px] object-cover"
+                        />
                         <div className="flex-1 ml-4  md:p-5">
                             <h3 className="text-lg">
                                 {instructor.name}
                             </h3>
                             <div className="text-sm">
-                               <RichTextRenderer html={instructor.description}/>
+                                <RichTextRenderer html={instructor.description} />
                             </div>
                         </div>
                     </div>
