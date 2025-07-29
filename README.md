@@ -72,7 +72,45 @@ const MyComponent = ({ title }: Props) => {
 
 ---
 
-  
+  ## 🚀 How to Setup & Run Locally
+
+1.  Clone the repository:
+    
+    ```bash
+    git clone https://github.com/swerashed/10ms.git
+    
+    ```
+    
+2.  Navigate to the project folder:
+    
+    ```bash
+    cd 10ms
+    
+    ```
+    
+3.  Install dependencies using your preferred package manager:
+    
+    ```bash
+    bun i    # or
+    npm install    # or
+    yarn install
+    
+    ```
+    
+4.  Create a `.env` file in the root directory and add:
+    
+    ```env
+    NEXT_PUBLIC_BASE_URL=https://*********/products/ielts-course
+    
+    ```
+    
+5.  Run the development server:
+    
+    ```bash
+    npm run dev
+    
+    ```
+---
 
 ## 🔗 Live Preview
 
